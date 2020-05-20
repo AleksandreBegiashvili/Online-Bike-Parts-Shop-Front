@@ -9,11 +9,13 @@ import { ItemService } from './services/item.service';
 import { HomeService } from './services/home.service';
 import { DashboardService } from './services/dashboard.service';
 import { AuthService } from './services/auth.service';
+import { NavMenuComponent } from './layout/nav-menu/nav-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NavMenuComponent
   ],
   imports: [
     BrowserModule,
