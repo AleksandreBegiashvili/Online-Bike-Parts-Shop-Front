@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { AccessDeniedComponent } from './errors/access-denied/access-denied.component';
 
 const routes: Routes = [
   {
@@ -13,12 +14,16 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'items',
+    path: 'item',
     loadChildren: './item/item.module#ItemModule'
   },
   {
     path: 'account',
     loadChildren: './account/account.module#AccountModule'
+  },
+  {
+    path: "access-denied",
+    component: AccessDeniedComponent
   },
   {
     path: "**",

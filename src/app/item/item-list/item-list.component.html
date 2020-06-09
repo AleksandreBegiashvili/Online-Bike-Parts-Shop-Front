@@ -1,50 +1,56 @@
 <div class="wrapper">
 
   <div class="container-fluid">
-
     <div class="row">
 
       <div class="col-lg-2">
         <div class="row">
           <div class="col-lg-12">
-            <section class="category-list" style="padding: 10px; border: 1px solid black;">
-              <div class="category-list-header">
-                <h6>Search in Category</h6>
-              </div>
-              <div class="category-list-content">
-                <a *ngFor="let c of categories" href="#">
-                  {{ c.categoryName }} <br>
-                </a>
-              </div>
+            <section class="sidebar" style="padding: 10px; border: 1px solid black;">
+              <h6>Filter goes here</h6>
+              <h6>Filter goes here</h6>
+              <h6>Filter goes here</h6>
+              <h6>Filter goes here</h6>
+              <h6>Filter goes here</h6>
+              <h6>Filter goes here</h6>
             </section>
           </div>
         </div>
       </div>
 
       <div class="col-lg-8">
-        <div class="row">
+
+        <div class="row" style="margin-bottom: 50px;">
           <div class="col-lg-12">
             <form class="form-inline">
               <div class="form-group" style="width: 100%;">
-                <input type="search" class="form-control mr-sm-2" [(ngModel)]="searchString"
+                <input type="search" class="form-control mr-sm-2" [(ngModel)]="searchStr"
                   [ngModelOptions]="{standalone: true}" placeholder="Search for any item" style="width: 80%;">
                 <button class="btn btn-primary" (click)="onSearchClick()" style="width: 15%">Search</button>
               </div>
             </form>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <p *ngFor="let i of items">
+              {{ i.name }}, price: {{ i.price }}$
+            </p>
+          </div>
+        </div>
+
       </div>
 
       <div class="col-lg-2">
         <div class="row">
           <div class="col-lg-12">
-            <h6>Ads Should Go Here</h6>
+            <h6>Ads should go here</h6>
           </div>
         </div>
       </div>
-
     </div>
-
   </div>
+
 
 </div>

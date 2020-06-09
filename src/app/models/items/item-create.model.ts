@@ -5,5 +5,5 @@ export class ItemCreate {
     categoryId: number;
     conditionId: number;
     locationId: number;
-    sellerId: string;
+    //sellerId: string;
 }

@@ -14,7 +14,7 @@ export class AuthService {
 
   private baseUrl: string = environment.ApiUrl;
   private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus());
-  private userName = new BehaviorSubject<string>(localStorage.getItem('userName'));
+  private userName = new BehaviorSubject<string>(localStorage.getItem('username'));
   private userRole = new BehaviorSubject<string>(localStorage.getItem('userRole'));
 
   constructor(private http: HttpClient,
@@ -27,7 +27,7 @@ export class AuthService {
           this.loginStatus.next(true);
           localStorage.setItem('loginStatus', '1');
           localStorage.setItem('jwt', result.token);
-          localStorage.setItem('username', result.username);
+          localStorage.setItem('username', result.userName);
           localStorage.setItem('expiration', result.expiration);
           localStorage.setItem('userRole', result.userRole);
           this.userName.next(localStorage.getItem('username'));

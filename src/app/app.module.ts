@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -10,24 +10,41 @@ import { HomeService } from './services/home.service';
 import { DashboardService } from './services/dashboard.service';
 import { AuthService } from './services/auth.service';
 import { NavMenuComponent } from './layout/nav-menu/nav-menu.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuardService } from './guards/auth-guard.service';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { AccessDeniedComponent } from './errors/access-denied/access-denied.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavMenuComponent
+    NavMenuComponent,
+    AccessDeniedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ModalModule.forRoot(),
+    AngularFontAwesomeModule
   ],
   providers: [
     ItemService,
     HomeService,
     DashboardService,
-    AuthService
+    AuthService,
+    AuthGuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

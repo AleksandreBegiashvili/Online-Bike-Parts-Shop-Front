@@ -1,0 +1,116 @@
+<section>
+  <div class="signup-form">
+    <form method="POST" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <h2>Register</h2>
+      <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+
+
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input formControlName="firstName" type="text" class="form-control" required autofocus>
+        <div *ngIf="registerForm.controls['firstName'].touched && registerForm.controls['firstName'].errors" class="errorMessage">
+          <span *ngIf="registerForm.controls['firstName'].hasError('required')">First Name is required.</span>
+      </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input formControlName="lastName" type="text" class="form-control" required autofocus>
+        <div *ngIf="registerForm.controls['lastName'].touched && registerForm.controls['lastName'].errors" class="errorMessage">
+          <span *ngIf="registerForm.controls['lastName'].hasError('required')">Last Name is required.</span>
+      </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="userName">userName</label>
+        <input formControlName="userName" type="text" class="form-control" required autofocus>
+        <div *ngIf="registerForm.controls['userName'].touched && registerForm.controls['userName'].errors" class="errorMessage">
+          <span *ngIf="registerForm.controls['userName'].hasError('required')">Username is required.</span>
+          <span *ngIf="registerForm.controls['userName'].hasError('maxlength')">Only 10 characters allowed for UserName.</span>
+          <span *ngIf="registerForm.controls['userName'].hasError('minlength')">At least 5 characters needed for UserName.</span>
+      </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input formControlName="email" type="email" class="form-control" placeholder="" required autofocus>
+        <div *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].errors" class="errorMessage">
+          <span *ngIf="registerForm.controls['email'].hasError('required')">Email is required.</span>
+          <span *ngIf="registerForm.controls['email'].hasError('email')">Please provide valid email.</span>
+      </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input formControlName="password" type="password" class="form-control" placeholder="" required autofocus>
+        <div *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].errors" class="errorMessage">
+          <span *ngIf="registerForm.controls['password'].hasError('required')">Password is required.</span>
+          <span *ngIf="registerForm.controls['password'].hasError('maxlength')">Only 10 characters allowed for password.</span>
+          <span *ngIf="registerForm.controls['password'].hasError('minlength')">At least 5 characters needed for password.</span>
+      </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="cpassword">Confirm Password</label>
+        <input formControlName="cpassword" type="password" class="form-control"
+          required autofocus>
+          <div *ngIf="registerForm.controls['cpassword'].touched && registerForm.controls['cpassword'].errors" class="errorMessage">
+            <span *ngIf="registerForm.controls['cpassword'].hasError('required')">Confirm Password is required.</span>
+            <span *ngIf="registerForm.controls['cpassword'].hasError('mustMatch')">Password Must Match.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Phone Number</label>
+        <input formControlName="phoneNumber" type="text" class="form-control" placeholder="" required autofocus>
+        <div *ngIf="registerForm.controls['phoneNumber'].touched && registerForm.controls['phoneNumber'].errors" class="errorMessage">
+          <span *ngIf="registerForm.controls['phoneNumber'].hasError('required')">Phone Number is required.</span>
+      </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input formControlName="address" type="text" class="form-control" placeholder="" required autofocus>
+        <div *ngIf="registerForm.controls['address'].touched && registerForm.controls['address'].errors" class="errorMessage">
+          <span *ngIf="registerForm.controls['address'].hasError('required')">Address is required.</span>
+      </div>
+      </div>
+
+
+      <!-- <div class="form-group">
+        <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of
+            Use</a> &amp; <a href="#">Privacy Policy</a></label>
+      </div> -->
+
+
+      <div class="form-group">
+        <button [disabled]="registerForm.invalid" type="submit" class="btn btn-success btn-lg btn-block">Register</button>
+      </div>
+
+
+    </form>
+    <div class="text-center">Already have an account? <a [routerLink]="['/account/login']">Sign in</a></div>
+  </div>
+</section>
+
+
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">RabidBike Registration</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-center">
+      <p class="list-group-item active">{{modalMessage}}</p>
+        <ul class="list-group" >
+            <li class="list-group-item" *ngFor="let err of errorList">{{err}}</li>
+        </ul>
+    </div>
+</ng-template>
