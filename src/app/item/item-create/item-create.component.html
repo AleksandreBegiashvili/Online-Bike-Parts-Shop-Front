@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2" style="background-color:indianred;">
+
+        </div>
+
+        <div class="col-md-8 d-flex justify-content-center">
+            <div class="create-form" style="width: 50%;">
+                <div class="form-header text-center">
+                    <h4>Add New Item To Sell</h4>
+                </div>
+                <form [formGroup]="createItemForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="itemName">Item Name</label>
+                        <input type="text" id="itemName" class="form-control" formControlName="name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="itemPrice">Item Price</label>
+                        <input type="number" id="itemPrice" class="form-control" formControlName="price">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="itemCategory">Item Category</label>
+                        <select id="itemCategory" class="form-control" formControlName="categoryId">
+                            <option *ngFor="let cat of categories" [ngValue]="cat.id">
+                                {{ cat.categoryName }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="itemCondition">Item Condition</label>
+                        <select id="itemCondition" class="form-control" formControlName="conditionId">
+                            <option *ngFor="let con of conditions" [ngValue]="con.id">
+                                {{ con.name }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="itemLocation">Item Location</label>
+                        <select id="itemLocation" class="form-control" formControlName="locationId">
+                            <option *ngFor="let loc of locations" [ngValue]="loc.id">
+                                {{ loc.city }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="itemDescription">Item Description</label>
+                        <!-- <textarea id="itemDescription" class="form-control" cols="30" rows="10" formControlName="description"></textarea> -->
+                        <input type="text" id="itemDescription" class="form-control" formControlName="description" >
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Create</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-2" style="background-color: indianred;">
+
+        </div>
+    </div>
+</div>

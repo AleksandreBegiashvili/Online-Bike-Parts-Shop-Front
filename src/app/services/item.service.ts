@@ -46,14 +46,9 @@ export class ItemService {
   }
 
   deleteItem(id: number) {
-    return this.http.delete(`${this.baseUrl}/DeleteItem/${id}`);
+    return this.http.delete(`${this.baseUrl}/Item/DeleteItem/${id}`);
   }
 
-  getConditions(): Observable<Condition[]> {
-    return this.http.get<Condition[]>(`${this.baseUrl}/Item/GetConditions`);
-  }
 
-  getLocations(): Observable<Location[]> {
-    return this.http.get<Location[]>(`${this.baseUrl}/Item/GetLocations`);
-  }
+
 }

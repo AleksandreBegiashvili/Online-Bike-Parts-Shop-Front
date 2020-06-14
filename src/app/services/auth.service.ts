@@ -16,6 +16,7 @@ export class AuthService {
   private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus());
   private userName = new BehaviorSubject<string>(localStorage.getItem('username'));
   private userRole = new BehaviorSubject<string>(localStorage.getItem('userRole'));
+  private userId: BehaviorSubject<string>;
 
   constructor(private http: HttpClient,
     private router: Router) { }
@@ -80,5 +81,9 @@ export class AuthService {
   get currentUserRole() {
     return this.userRole.asObservable();
   }
+
+  // get currentUserId() {
+  //   return this.userId.asObservable();
+  // }
 
 }

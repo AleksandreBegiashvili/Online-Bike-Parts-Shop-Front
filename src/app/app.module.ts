@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemService } from './services/item.service';
-import { HomeService } from './services/home.service';
+import { CategoryService } from './services/category.service';
 import { DashboardService } from './services/dashboard.service';
 import { AuthService } from './services/auth.service';
 import { NavMenuComponent } from './layout/nav-menu/nav-menu.component';
@@ -16,13 +16,17 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { AccessDeniedComponent } from './errors/access-denied/access-denied.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LocationService } from './services/location.service';
+import { ConditionService } from './services/condition.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavMenuComponent,
-    AccessDeniedComponent
+    AccessDeniedComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +40,11 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
   ],
   providers: [
     ItemService,
-    HomeService,
     DashboardService,
+    CategoryService,
     AuthService,
+    LocationService,
+    ConditionService,
     AuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,

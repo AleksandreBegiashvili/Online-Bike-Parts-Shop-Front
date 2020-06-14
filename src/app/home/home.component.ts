@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from '../services/home.service';
+import { CategoryService } from '../services/category.service';
 import { ItemService } from '../services/item.service';
 import { ItemGet } from '../models/items/item-get.model';
 import { Router } from '@angular/router';
@@ -16,12 +16,12 @@ export class HomeComponent implements OnInit {
   items: ItemGet[];
   categories: Category[];
 
-  constructor(private homeService: HomeService,
+  constructor(private categoryService: CategoryService,
     private itemService: ItemService,
     private router: Router) { }
 
   ngOnInit() {
-    this.homeService.getCategories().subscribe(
+    this.categoryService.getCategories().subscribe(
       result => this.categories = result
     )
   }

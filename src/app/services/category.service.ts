@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService {
+export class CategoryService {
 
   private baseUrl: string = environment.ApiUrl;
 

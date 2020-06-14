@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav-menu',
@@ -11,8 +13,10 @@ export class NavMenuComponent implements OnInit {
 
   isLoggedIn$: Observable<boolean>;
   username$: Observable<string>;
+  userNameNormal: string;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
     this.isLoggedIn$ = this.authService.isLoggedIn;
