@@ -65,7 +65,6 @@ export class ItemCreateComponent implements OnInit {
 
   onSubmit() {
     this.item = Object.assign(this.item, this.createItemForm.value);
-    debugger;
     if(!isNullOrUndefined(this.item)) {
       this.itemService.createItem(this.item).subscribe(
         success => this.router.navigate(['/dashboard']),

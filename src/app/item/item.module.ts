@@ -8,6 +8,7 @@ import { JwtInterceptor } from '../helpers/jwt.interceptor';
 import { ItemCreateComponent } from './item-create/item-create.component';
 import { ItemUpdateComponent } from './item-update/item-update.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [ItemListComponent, ItemCreateComponent, ItemUpdateComponent],
@@ -15,7 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ItemRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [
     AuthGuardService,

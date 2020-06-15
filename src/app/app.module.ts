@@ -19,6 +19,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LocationService } from './services/location.service';
 import { ConditionService } from './services/condition.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ConditionService } from './services/condition.service';
     FormsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    NgxPaginationModule
   ],
   providers: [
     ItemService,

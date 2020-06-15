@@ -34,9 +34,39 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <p *ngFor="let i of items">
-              {{ i.name }}, price: {{ i.price }}$
-            </p>
+            <div class="card bg-light mb-3"
+              *ngFor="let i of items | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalCount}">
+              <div class="row no-gutters">
+                <div class="col-md-2">
+                  <img src="./../../../assets/images/Air-Filter.jpg" alt="pic" class="card-img" height="200px">
+                </div>
+                <div class="col-md-10">
+                  <div class="card-header">
+                    <a href="#">{{ i.name }}</a>
+                    <span style="float: right;">
+                      {{ i.condition }} from <a href="#">{{ i.seller }}</a>
+                    </span>
+                  </div>
+                  <div class="card-body">
+                    <h6 class="card-text">
+                      price: {{ i.price }}$
+                    </h6>
+                    <p class="card-text text-muted">
+                      <small class="text-small">
+                        {{ i.description }}
+                      </small>
+                    </p>
+                    <div class="card-text">
+                      {{ i.location }}
+                      <button class="btn btn-primary" style="float: right;" (click)="onDetailsClick()">Details</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <pagination-controls (pageChange)="p = $event; onPageChanged()"></pagination-controls>
+            </div>
           </div>
         </div>
 

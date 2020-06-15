@@ -27,14 +27,14 @@ export class ItemService {
     return params;
   }
 
-  searchItems(itemName: string, pageNumber: number = 1, pageSize: number = 10) {
+  searchItems(itemName: string, pageNumber: number, pageSize: number) {
     let parameters = this.createParams(itemName, pageNumber, pageSize);
-    return this.http.get<ItemGet[]>(`${this.baseUrl}/Item/GetAll`, { params: parameters });
+    return this.http.get<any>(`${this.baseUrl}/Item/GetAll`, { params: parameters });
   }
 
   searchItemsByCategoryId(categoryId: number, itemName: string, pageNumber: number = 1, pageSize: number = 10) {
     let params = this.createParams(itemName, pageNumber, pageSize, categoryId);
-    return this.http.get<ItemGet[]>(`${this.baseUrl}/Item/GetAllByCategoryId`, { params: params });
+    return this.http.get<any>(`${this.baseUrl}/Item/GetAllByCategoryId`, { params: params });
   }
 
   createItem(item: ItemCreate) {
