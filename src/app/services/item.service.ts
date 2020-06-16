@@ -37,6 +37,10 @@ export class ItemService {
     return this.http.get<any>(`${this.baseUrl}/Item/GetAllByCategoryId`, { params: params });
   }
 
+  getById(id: number): Observable<ItemGet> {
+    return this.http.get<ItemGet>(`${this.baseUrl}/Item/GetById/${id}`);
+  }
+
   createItem(item: ItemCreate) {
     return this.http.post(`${this.baseUrl}/Item/CreateItem`, item);
   }

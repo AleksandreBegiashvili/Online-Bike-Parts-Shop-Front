@@ -3,6 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { take, map } from 'rxjs/operators';
+import { debug } from 'util';
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +19,6 @@ export class AuthGuardService implements CanActivate {
             (loginStatus: boolean) => {
                 const destination: string = state.url;
                 const itemId = route.params.id;
-
                 // check if user is not logged in
                 if (!loginStatus) {
                     this.router.navigate(['/account/login'], { queryParams: { returnUrl: state.url } });
@@ -27,11 +27,16 @@ export class AuthGuardService implements CanActivate {
 
                 // if user is already logged in
                 switch (destination) {
+                    case '/dashboard': {
+                        if (localStorage.getItem("userRole") === "User" || localStorage.getItem("userRole") === "Admin") {
+                            return true;
+                        } else {
+                            this.router.navigate(['/access-denied']);
+                            return false;
+                        }
+                    }
                     case '/item': return true;
                     case '/item/' + itemId: {
-                        // if (localStorage.getItem("userRole") === "User" || localStorage.getItem("userRole") === "Admin") {
-                        //     return true;
-                        // }
                         return true;
                     }
                     case '/item/create': {
@@ -42,7 +47,7 @@ export class AuthGuardService implements CanActivate {
                             return false;
                         }
                     }
-                    case '/item/update': {
+                    case '/item/update/' + itemId: {
                         if (localStorage.getItem("userRole") === "User" || localStorage.getItem("userRole") === "Admin") {
                             return true;
                         } else {

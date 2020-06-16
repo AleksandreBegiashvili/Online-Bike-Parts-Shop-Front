@@ -31,7 +31,7 @@ export class ItemCreateComponent implements OnInit {
   constructor(private itemService: ItemService,
     private categoryService: CategoryService,
     private conditionService: ConditionService,
-    private LocationService: LocationService,
+    private locationService: LocationService,
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService) { }
@@ -53,7 +53,7 @@ export class ItemCreateComponent implements OnInit {
       result => this.conditions = result
     );
 
-    this.LocationService.getLocations().subscribe(
+    this.locationService.getLocations().subscribe(
       result => this.locations = result
     );
 

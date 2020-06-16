@@ -6,7 +6,9 @@ export class ItemGet {
     listDate: Date;
     categoryId: number;
     category: string;
+    locationId: number;
     location: string;
+    conditionId: number;
     condition: string;
     seller: string;
 }

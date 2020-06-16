@@ -16,7 +16,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'update',
+    path: 'update/:id',
     component: ItemUpdateComponent,
     canActivate: [AuthGuardService]
   }

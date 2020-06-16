@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Login } from 'src/app/models/account/login.model';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-login',
@@ -37,7 +38,8 @@ export class LoginComponent implements OnInit {
         let token = (<any>result).token;
         console.log("User logged in succesfully");
         this.invalidLogin = false;
-        this.router.navigateByUrl(this.returnUrl);
+        debugger;
+        this.router.navigate([`${this.returnUrl}`]);
       },
       error => {
         this.invalidLogin = true;
