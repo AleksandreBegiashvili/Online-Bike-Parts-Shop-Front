@@ -9,9 +9,10 @@ import { ItemCreateComponent } from './item-create/item-create.component';
 import { ItemUpdateComponent } from './item-update/item-update.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ItemListByCategoryComponent } from './item-list-by-category/item-list-by-category.component';
 
 @NgModule({
-  declarations: [ItemListComponent, ItemCreateComponent, ItemUpdateComponent],
+  declarations: [ItemListComponent, ItemCreateComponent, ItemUpdateComponent, ItemListByCategoryComponent],
   imports: [
     CommonModule,
     ItemRoutingModule,

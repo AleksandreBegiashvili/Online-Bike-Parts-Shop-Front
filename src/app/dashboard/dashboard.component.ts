@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '../services/dashboard.service';
+import { UserGet } from '../models/account/user-get.model';
+import { ItemGet } from '../models/items/item-get.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  items: ItemGet[];
+  userDetails: UserGet;
+  
+  constructor(private dashService: DashboardService) { }
 
   ngOnInit() {
+    this.dashService.getCurrentUserDetails().subscribe(
+      result => this.userDetails = result
+    );
+
+    this.dashService.getItemsBySeller().subscribe(
+      result => this.items = result
+    )
   }
 
 }

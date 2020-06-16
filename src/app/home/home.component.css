@@ -1,0 +1,12 @@
+.category-link:link, .category-link:visited {
+    background-color: #dec8a0;
+    color: black;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .category-link:hover, .category-link:active {
+    background-color: #ffa500;
+  }

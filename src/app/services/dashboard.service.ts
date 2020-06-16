@@ -1,9 +1,25 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { ItemGet } from '../models/items/item-get.model';
+import { Observable } from 'rxjs';
+import { UserGet } from '../models/account/user-get.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
 
-  constructor() { }
+  private baseUrl: string = environment.ApiUrl;
+
+  constructor(private http: HttpClient) { }
+
+  getItemsBySeller(): Observable<ItemGet[]> {
+    return this.http.get<ItemGet[]>(`${this.baseUrl}/Dashboard/GetItemsBySeller`);
+  }
+
+  getCurrentUserDetails(): Observable<UserGet> {
+    return this.http.get<UserGet>(`${this.baseUrl}/Dashboard/GetCurrentUserDetails`);
+  }
+
 }

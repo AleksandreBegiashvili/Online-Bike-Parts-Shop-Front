@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ItemService } from 'src/app/services/item.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ItemGet } from 'src/app/models/items/item-get.model';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-item-list',
@@ -32,13 +33,15 @@ export class ItemListComponent implements OnInit {
   }
 
   onSearchClick() {
-    this.router.navigate(['/item/list'], { queryParams: { search: this.searchStr } });
-    this.itemService.searchItems(this.searchStr, this.p, this.pageSize).subscribe(
-      result => {
-        this.items = result.items;
-        this.totalCount = result.totalCount;
-      }
-    )
+    if (!isNullOrUndefined(this.searchStr) && this.searchStr !== "") {
+      this.router.navigate(['/item/list'], { queryParams: { search: this.searchStr } });
+      this.itemService.searchItems(this.searchStr, this.p, this.pageSize).subscribe(
+        result => {
+          this.items = result.items;
+          this.totalCount = result.totalCount;
+        }
+      )
+    }
   }
 
   onPageChanged() {

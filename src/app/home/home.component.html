@@ -8,12 +8,12 @@
         <div class="row">
           <div class="col-lg-12">
             <section class="category-list" style="padding: 10px; border: 1px solid black;">
-              <div class="category-list-header">
-                <h6>Search in Category</h6>
+              <div class="category-list-header text-center" style="background-color: orange; padding: 0.5rem; margin-bottom: 0.3rem;">
+                <h5 style="margin-bottom: 0;">Search in Category</h5>
               </div>
               <div class="category-list-content">
-                <a *ngFor="let c of categories" href="#">
-                  {{ c.categoryName }} <br>
+                <a *ngFor="let c of categories" href="#" class="category-link">
+                  -> {{ c.categoryName }} <br>
                 </a>
               </div>
             </section>

@@ -1,3 +1,86 @@
-<p>
-  dashboard works!
-</p>
+<div class="wrapper">
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-3 bg-light">
+        <div class="row">
+          <div class="col-lg-12">
+            <section class="sidebar" style="padding: 10px; border: 1px solid black;">
+
+
+              <div class="card text-white bg-dark">
+                <div class="card-header">user: {{ userDetails?.userName }}</div>
+                <div class="card-body">
+                  <h5 class="card-title">{{ userDetails?.firstName }} {{ userDetails?.lastName }}</h5>
+                  <ul>
+                    <li class="card-text">{{ userDetails?.email }}</li>
+                    <li class="card-text">{{ userDetails?.address }}</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card bg-light mb-3" *ngFor="let i of items">
+              <!-- *ngFor="let i of items | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalCount}"> -->
+              <div class="row no-gutters">
+                <div class="col-md-3">
+                  <img src="./../../../assets/images/Air-Filter.jpg" alt="pic" class="card-img" height="200px">
+                </div>
+                <div class="col-md-9">
+                  <div class="card-header">
+                    <a href="#">{{ i.name }}</a>
+                    <span style="float: right;">
+                      {{ i.condition }} from <a href="#">{{ i.seller }}</a>
+                    </span>
+                  </div>
+                  <div class="card-body" style="padding-bottom: 0;">
+                    <h6 class="card-text">
+                      price: {{ i.price }}$
+                    </h6>
+                    <p class="card-text text-muted">
+                      <small class="text-small">
+                        {{ i.description }}
+                      </small>
+                    </p>
+                    <div class="card-text">
+                      {{ i.location }}
+                    </div>
+                  </div>
+                  <div class="card-footer" style="border-top: none; padding: 0;">
+                    <div style="float: right;">
+                      <button class="btn btn-warning" [routerLink]="['/update', i.id]" style="margin-right: 4px; margin-bottom: 4px;">Edit</button>
+                      <button class="btn btn-primary" (click)="onDetailsClick()" style="margin-right: 4px; margin-bottom: 4px;">Details</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="text-center">
+              <pagination-controls (pageChange)="p = $event; onPageChanged()"></pagination-controls>
+            </div> -->
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-3 bg-info">
+        <div class="row">
+          <div class="col-lg-12">
+            <h6>Ads should go here</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

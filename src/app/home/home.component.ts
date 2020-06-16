@@ -5,6 +5,7 @@ import { ItemGet } from '../models/items/item-get.model';
 import { Router } from '@angular/router';
 import { Category } from '../models/items/category.model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-home',
@@ -36,6 +37,8 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
-    this.router.navigate(['/item/list'], { queryParams: { search: this.searchForm.get('searchString').value } });
+    if (!isNullOrUndefined(this.searchForm.get('searchString').value) && this.searchForm.get('searchString').value !== "") {
+      this.router.navigate(['/item/list'], { queryParams: { search: this.searchForm.get('searchString').value } });
+    }
   }
 }
