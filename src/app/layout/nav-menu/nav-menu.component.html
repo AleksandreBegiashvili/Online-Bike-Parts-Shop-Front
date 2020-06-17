@@ -1,9 +1,10 @@
 <header>
-  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom mb-3">
-    <a class="navbar-brand" [routerLink]='["/"]'>RabidBike</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom mb-3">
+        <a class="navbar-brand" [routerLink]='["/"]'>RabidBike</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="navbar-collapse collapse d-sm-inline-flex">
             <ul class="navbar-nav flex-grow-2">
                 <!-- <li class="nav-item">
@@ -24,14 +25,29 @@
                 <li class="nav-item" *ngIf="(isLoggedIn$ | async) as loggedIn">
                     <a class="btn btn-success" *ngIf="loggedIn" [routerLink]='["/item/create"]'>Add Item</a>
                 </li>
-                <li class="nav-item" *ngIf="(isLoggedIn$ | async) as loggedIn">
+
+                <!-- <li class="nav-item" *ngIf="(isLoggedIn$ | async) as loggedIn">
                     <a class="nav-link text-danger" *ngIf="(username$ | async) as uname" [routerLink]='["/dashboard"]'>{{ uname }}</a>
                 </li>
                 <li class="nav-item" *ngIf="(isLoggedIn$ | async) as loggedIn">
                     <a class="btn btn-primary text-white" (click)="onLogout()" *ngIf="loggedIn">Logout</a>
+                </li> -->
+
+                <li *ngIf="(isLoggedIn$ | async) as loggedIn">
+                    <div class="btn-group dropleft" style="margin-left: 5px;">
+                        <button type="button" *ngIf="(username$ | async) as uname"
+                            class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <span>{{ uname }}</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item text-success" [routerLink]='["/dashboard"]'>dashboard</a>
+                            <a class="dropdown-item text-danger" (click)="onLogout()" *ngIf="loggedIn">Logout</a>
+                        </div>
+                    </div>
                 </li>
             </ul>
 
         </div>
-  </nav>
+    </nav>
 </header>

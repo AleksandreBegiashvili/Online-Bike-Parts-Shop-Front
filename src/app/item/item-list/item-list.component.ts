@@ -34,7 +34,7 @@ export class ItemListComponent implements OnInit {
 
   onSearchClick() {
     if (!isNullOrUndefined(this.searchStr) && this.searchStr !== "") {
-      this.router.navigate(['/item/list'], { queryParams: { search: this.searchStr } });
+      this.router.navigate(['/item'], { queryParams: { search: this.searchStr } });
       this.itemService.searchItems(this.searchStr, this.p, this.pageSize).subscribe(
         result => {
           this.items = result.items;

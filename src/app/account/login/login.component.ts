@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
         let token = (<any>result).token;
         console.log("User logged in succesfully");
         this.invalidLogin = false;
-        debugger;
         this.router.navigate([`${this.returnUrl}`]);
       },
       error => {

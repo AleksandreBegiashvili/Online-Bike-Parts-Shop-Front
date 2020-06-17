@@ -38,7 +38,8 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     if (!isNullOrUndefined(this.searchForm.get('searchString').value) && this.searchForm.get('searchString').value !== "") {
-      this.router.navigate(['/item/list'], { queryParams: { search: this.searchForm.get('searchString').value } });
+      this.router.navigate(['/item'], { queryParams: { search: this.searchForm.get('searchString').value } });
     }
   }
+
 }

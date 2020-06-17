@@ -32,7 +32,7 @@ export class ItemService {
     return this.http.get<any>(`${this.baseUrl}/Item/GetAll`, { params: parameters });
   }
 
-  searchItemsByCategoryId(categoryId: number, itemName: string, pageNumber: number = 1, pageSize: number = 10) {
+  searchItemsByCategoryId(categoryId: number, itemName: string, pageNumber: number, pageSize: number) {
     let params = this.createParams(itemName, pageNumber, pageSize, categoryId);
     return this.http.get<any>(`${this.baseUrl}/Item/GetAllByCategoryId`, { params: params });
   }

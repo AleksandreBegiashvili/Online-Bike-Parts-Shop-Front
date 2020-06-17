@@ -8,11 +8,13 @@
         <div class="row">
           <div class="col-lg-12">
             <section class="category-list" style="padding: 10px; border: 1px solid black;">
-              <div class="category-list-header text-center" style="background-color: orange; padding: 0.5rem; margin-bottom: 0.3rem;">
+              <div class="category-list-header text-center"
+                style="background-color: orange; padding: 0.5rem; margin-bottom: 0.3rem;">
                 <h5 style="margin-bottom: 0;">Search in Category</h5>
               </div>
               <div class="category-list-content">
-                <a *ngFor="let c of categories" href="#" class="category-link">
+                <a *ngFor="let c of categories" [routerLink]="['/item', c.categoryName]" [state]="{ categoryId: c.id }"
+                  class="category-link">
                   -> {{ c.categoryName }} <br>
                 </a>
               </div>
@@ -29,8 +31,7 @@
                 <div class="form-group" style="width: 100%;">
                   <input type="search" class="form-control mr-sm-2" formControlName="searchString"
                     placeholder="Search for any item" style="width: 80%;">
-                  <button class="btn btn-primary" type="submit"
-                    style="width: 15%">Search</button>
+                  <button class="btn btn-primary" type="submit" style="width: 15%">Search</button>
                 </div>
               </form>
             </form>
