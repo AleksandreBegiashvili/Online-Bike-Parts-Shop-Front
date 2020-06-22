@@ -10,6 +10,10 @@ import { ItemGet } from '../models/items/item-get.model';
 })
 export class DashboardComponent implements OnInit {
 
+  p: number = 1;
+  pageSize: number = 5;
+  totalCount: number;
+
   items: ItemGet[];
   userDetails: UserGet;
   
@@ -20,8 +24,17 @@ export class DashboardComponent implements OnInit {
       result => this.userDetails = result
     );
 
-    this.dashService.getItemsBySeller().subscribe(
+    this.dashService.getItemsBySeller(this.p, this.pageSize).subscribe(
       result => this.items = result
+    )
+  }
+
+  onPageChanged() {
+    this.dashService.getItemsBySeller(this.p, this.pageSize).subscribe(
+      result => {
+        this.items = result.items;
+        this.totalCount = result.totalCount;
+      }
     )
   }
 

@@ -26,7 +26,7 @@
               <div class="form-group" style="width: 100%;">
                 <input type="search" class="form-control mr-sm-2" [(ngModel)]="searchStr"
                   [ngModelOptions]="{standalone: true}" placeholder="Search for any item" style="width: 80%;">
-                <button class="btn btn-primary" (click)="onSearchClick()" style="width: 15%">Search</button>
+                <button class="btn btn-primary" (click)="onSearchClick()" style="width: 15%">ძებნა</button>
               </div>
             </form>
           </div>
@@ -34,10 +34,32 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <div class="card bg-light mb-3"
+            <div class="card mb-3 ml-5"
               *ngFor="let i of items | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalCount}">
               <div class="row no-gutters">
-                <div class="col-md-2">
+                <div class="item-card">
+                  <div class="item-card__img">
+                    <img src="./../../../assets/images/Air-Filter.jpg" alt="pic">
+                  </div>
+
+                  <div class="item-card__info">
+                    <h1 class="item-card__title">
+                      <a href="#">{{ i.name }}</a>
+                      <span style="color: black; float: right;"><small>{{ i.condition }}</small></span>
+
+                    </h1>
+                    <div class="item-card__price">
+                      {{ i.price }} ლარი
+                    </div>
+                    <p class="item-card__text">
+                      {{ i.location }}
+                    </p>
+                    <a href="#" class="item-card__cta">დეტალურად</a>
+                  </div>
+
+
+                </div>
+                <!-- <div class="col-md-2">
                   <img src="./../../../assets/images/Air-Filter.jpg" alt="pic" class="card-img" height="200px">
                 </div>
                 <div class="col-md-10">
@@ -61,7 +83,7 @@
                       <button class="btn btn-primary" style="float: right;" (click)="onDetailsClick()">Details</button>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="text-center">

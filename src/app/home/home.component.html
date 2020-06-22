@@ -13,7 +13,7 @@
                 <h5 style="margin-bottom: 0;">Search in Category</h5>
               </div>
               <div class="category-list-content">
-                <a *ngFor="let c of categories" [routerLink]="['/item', c.categoryName]" [state]="{ categoryId: c.id }"
+                <a *ngFor="let c of categories" [routerLink]="['/item', c.categoryName.toLowerCase()]" [state]="{ categoryId: c.id }"
                   class="category-link">
                   -> {{ c.categoryName }} <br>
                 </a>
@@ -31,7 +31,7 @@
                 <div class="form-group" style="width: 100%;">
                   <input type="search" class="form-control mr-sm-2" formControlName="searchString"
                     placeholder="Search for any item" style="width: 80%;">
-                  <button class="btn btn-primary" type="submit" style="width: 15%">Search</button>
+                  <button class="btn btn-primary" type="submit" style="width: 15%">ძებნა</button>
                 </div>
               </form>
             </form>

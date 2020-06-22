@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from 'src/app/services/item.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ItemGet } from 'src/app/models/items/item-get.model';
 import { isNullOrUndefined } from 'util';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-item-list',
@@ -16,7 +18,8 @@ export class ItemListComponent implements OnInit {
   totalCount: number;
 
   items: ItemGet[];
-  searchStr: string = this.route.snapshot.queryParamMap.get('search');
+  // item$: Observable<any>;
+  searchStr: string;  //= this.route.snapshot.queryParamMap.get('search')
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -24,10 +27,15 @@ export class ItemListComponent implements OnInit {
 
 
   ngOnInit() {
-    this.itemService.searchItems(this.searchStr, this.p, this.pageSize).subscribe(
-      result => {
-        this.items = result.items;
-        this.totalCount = result.totalCount;
+    this.route.queryParams.subscribe(
+      params => {
+        this.itemService.searchItems(params['search'], this.p, this.pageSize).subscribe(
+          result => {
+            this.items = result.items;
+            this.totalCount = result.totalCount;
+          }
+        );
+        this.searchStr = params['search'];
       }
     )
   }
@@ -35,12 +43,6 @@ export class ItemListComponent implements OnInit {
   onSearchClick() {
     if (!isNullOrUndefined(this.searchStr) && this.searchStr !== "") {
       this.router.navigate(['/item'], { queryParams: { search: this.searchStr } });
-      this.itemService.searchItems(this.searchStr, this.p, this.pageSize).subscribe(
-        result => {
-          this.items = result.items;
-          this.totalCount = result.totalCount;
-        }
-      )
     }
   }
 

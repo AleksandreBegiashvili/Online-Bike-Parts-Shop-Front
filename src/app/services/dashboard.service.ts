@@ -14,8 +14,12 @@ export class DashboardService {
 
   constructor(private http: HttpClient) { }
 
-  getItemsBySeller(): Observable<ItemGet[]> {
-    return this.http.get<ItemGet[]>(`${this.baseUrl}/Dashboard/GetItemsBySeller`);
+  getItemsBySeller(pageNumber: number, pageSize: number): Observable<any> {
+    let params = {
+      pageNumber: pageNumber.toString(),
+      pageSize: pageSize.toString(),
+    };
+    return this.http.get<ItemGet[]>(`${this.baseUrl}/Dashboard/GetItemsBySeller`, {params: params});
   }
 
   getCurrentUserDetails(): Observable<UserGet> {
