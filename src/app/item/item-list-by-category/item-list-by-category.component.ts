@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ItemGet } from 'src/app/models/items/item-get.model';
 import { ItemService } from 'src/app/services/item.service';
 import { isNullOrUndefined } from 'util';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-item-list-by-category',
@@ -21,16 +22,22 @@ export class ItemListByCategoryComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private itemService: ItemService) {
-      this.categoryId = this.router.getCurrentNavigation().extras.state.categoryId;
-     }
+    private itemService: ItemService,
+    private sharedService: SharedService) {}
 
   ngOnInit() {
+    this.sharedService.categoryIdSubscriber$.subscribe(
+      data => {
+        console.log(data);
+        this.categoryId = Number(data);
+      }
+    )
   }
-
+  
   onSearchClick() {
     if (!isNullOrUndefined(this.searchStr) && this.searchStr !== "") {
-      // this.router.navigate(['/item'], { queryParams: { search: this.searchStr } });
+      debugger;
+      
       this.itemService.searchItemsByCategoryId(this.categoryId, this.searchStr, this.pageNumber, this.pageSize).subscribe(
         result => {
           this.items = result.items;

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Category } from '../models/items/category.model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { isNullOrUndefined } from 'util';
+import { SharedService } from '../shared/shared.service';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,8 @@ export class HomeComponent implements OnInit {
   constructor(private categoryService: CategoryService,
     private itemService: ItemService,
     private router: Router,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private sharedService: SharedService) { }
 
   ngOnInit() {
 
@@ -42,4 +44,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
+
+  onCategoryClick(categoryId: number, categoryName: string) {
+    this.sharedService.emitData(categoryId);
+    this.router.navigate(['/item', categoryName.toLowerCase()]);
+  }
 }

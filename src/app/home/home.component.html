@@ -13,7 +13,8 @@
                 <h5 style="margin-bottom: 0;">Search in Category</h5>
               </div>
               <div class="category-list-content">
-                <a *ngFor="let c of categories" [routerLink]="['/item', c.categoryName.toLowerCase()]" [state]="{ categoryId: c.id }"
+                <!-- <a *ngFor="let c of categories" [routerLink]="['/item', c.categoryName.toLowerCase()]" [state]="{ categoryId: c.id }" -->
+                  <a *ngFor="let c of categories" (click)="onCategoryClick(c.id, c.categoryName)"
                   class="category-link">
                   -> {{ c.categoryName }} <br>
                 </a>

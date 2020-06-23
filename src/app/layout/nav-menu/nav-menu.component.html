@@ -42,7 +42,7 @@
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item text-success" [routerLink]='["/dashboard"]'>dashboard</a>
-                            <a class="dropdown-item text-danger" (click)="onLogout()" *ngIf="loggedIn">Logout</a>
+                            <button class="dropdown-item btn-danger logout-button" (click)="onLogout()" *ngIf="loggedIn">Logout</button>
                         </div>
                     </div>
                 </li>

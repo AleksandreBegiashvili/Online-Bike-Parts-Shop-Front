@@ -25,7 +25,10 @@ export class DashboardComponent implements OnInit {
     );
 
     this.dashService.getItemsBySeller(this.p, this.pageSize).subscribe(
-      result => this.items = result
+      result => {
+        this.items = result.items;
+        this.totalCount = result.totalCount;
+      }
     )
   }
 

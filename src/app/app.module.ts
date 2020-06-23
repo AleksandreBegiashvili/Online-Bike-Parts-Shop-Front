@@ -20,6 +20,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LocationService } from './services/location.service';
 import { ConditionService } from './services/condition.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SharedService } from './shared/shared.service';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AuthService,
     LocationService,
     ConditionService,
+    SharedService,
     AuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,
