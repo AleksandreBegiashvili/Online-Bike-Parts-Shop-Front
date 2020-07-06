@@ -2,11 +2,16 @@
     background-color: #dec8a0;
     color: black;
     padding: 14px 25px;
-    text-align: center;
     text-decoration: none;
-    display: block;
   }
   
   .category-link:hover, .category-link:active {
     background-color: #ffa500;
+  }
+
+  .category-link {
+    display: block;
+    width: 100%;
+    margin-top: 2px;
+    text-align: left;
   }

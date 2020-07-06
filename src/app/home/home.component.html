@@ -14,10 +14,10 @@
               </div>
               <div class="category-list-content">
                 <!-- <a *ngFor="let c of categories" [routerLink]="['/item', c.categoryName.toLowerCase()]" [state]="{ categoryId: c.id }" -->
-                  <a *ngFor="let c of categories" (click)="onCategoryClick(c.id, c.categoryName)"
-                  class="category-link">
+                  <button *ngFor="let c of categories" (click)="onCategoryClick(c.id, c.categoryName)"
+                  class="category-link btn btn-secondary">
                   -> {{ c.categoryName }} <br>
-                </a>
+                  </button>
               </div>
             </section>
           </div>
